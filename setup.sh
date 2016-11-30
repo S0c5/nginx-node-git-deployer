@@ -29,7 +29,7 @@ dependencies(){
     sudo mv ec2-metadata /usr/local/bin/ec2-metadata
     sudo chmod +x /usr/local/bin/ec2-metadata
     sudo apt-get update
-    sudo apt-get install -y awscli jq git nginx unzip zip python
+    sudo apt-get install -y awscli jq git nginx unzip zip python build-essential
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
     #   aws configure
 }
