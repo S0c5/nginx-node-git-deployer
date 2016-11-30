@@ -65,6 +65,7 @@ sudo mkdir ${GIT_SERVER_DIR}
 sudo chmod 777 ${GIT_SERVER_DIR}
 cd ${GIT_SERVER_DIR}
 git init --bare
+sudo rm -rf ${GIT_SERVER_DIR}/hooks/post-receive
 sudo mv /tmp/nginx-node-git-deployer-master/archives/post-receive ${GIT_SERVER_DIR}/hooks/
 sudo chmod +x ${GIT_SERVER_DIR}/hooks/post-receive
 
