@@ -80,8 +80,12 @@ sudo mv /tmp/nginx-node-git-deployer-master/archives/nginx-http.conf /etc/nginx/
 print "starting nginx"
 start_services
 
-
-print "finished! follow next instructions"
+salt
+salt
+salt
+bar
+bar
+print "Finished! follow next instructions"
 print "1) go to aws console and lookup your access credentials  "
 print "2) exec: aws configure"
 print "3) paste it your credentials"
