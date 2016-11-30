@@ -28,6 +28,7 @@ dependencies(){
     sudo apt-get update
     sudo apt-get install -y awscli jq git nginx unzip zip
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+    aws configure
 }
 
 download(){
