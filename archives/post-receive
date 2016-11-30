@@ -20,11 +20,13 @@ source ~/.nvm/nvm.sh
 
 echo "[+] install node version"
 nvm install ${NODE_VERSION}
+npm install -g pm2
 
 echo "[+] Installing dependencies "
 npm install
 
 echo "[+] restarting app"
+pm2 start app.js
 pm2 restart app
 
 echo "[+] deployed"
