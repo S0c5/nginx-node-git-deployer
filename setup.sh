@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #   variables
-export GIT_REPO_TREE=${1:-/opt/server.git}
+export GIT_SERVER_DIR=${1:-/opt/server.git}
 export APP_DOMAIN=${2:-localhost}
 export APP_PORT=${3:-3000}
 
@@ -42,7 +42,7 @@ start_services(){
 title
 
 bar
-print " git dir: $GIT_REPO_TREE"
+print " git dir: $GIT_SERVER_DIR"
 print " app domain: $APP_DOMAIN"
 print " app port: $APP_PORT"
 bar
@@ -60,19 +60,20 @@ sudo mv /tmp/nginx-node-git-deployer-master/archives/tags-to-env.sh /etc/profile
 
 print "Init git Bare"
 
-sudo mkdir ${GIT_REPO_TREE}
-sudo chmod 777 ${GIT_REPO_TREE}
-cd ${GIT_REPO_TREE}
+sudo mkdir ${GIT_SERVER_DIR}
+sudo chmod 777 ${GIT_SERVER_DIR}
+cd ${GIT_SERVER_DIR}
 git init --bare
-sudo mv /tmp/nginx-node-git-deployer-master/archives/post-receive ${GIT_REPO_TREE}/hooks/
-sudo chmod +x ${GIT_REPO_TREE}/hooks/post-receive
+sudo mv /tmp/nginx-node-git-deployer-master/archives/post-receive ${GIT_SERVER_DIR}/hooks/
+sudo chmod +x ${GIT_SERVER_DIR}/hooks/post-receive
 
 
 print "setup nginx"
 
-sed -i -e 's/*DOMAIN*/$APP_DOMAIN/g' /tmp/nginx-node-git-deployer-master/archives/nginx-http.conf
-sed -i -e 's/*PORT*/$APP_PORT/g' /tmp/nginx-node-git-deployer-master/archives/nginx-http.conf
-mv tmp/nginx-node-git-deployer-master/archives/nginx-http.conf /etc/nginx/sites-enabled/default
+sed -i -e "s/_DOMAIN_/$APP_DOMAIN/g" /tmp/nginx-node-git-deployer-master/archives/nginx-http.conf
+sed -i -e "s/_PORT_/$APP_PORT/g" /tmp/nginx-node-git-deployer-master/archives/nginx-http.conf
+sudo mv /tmp/nginx-node-git-deployer-master/archives/nginx-http.conf /etc/nginx/sites-enabled/default
 
 
+print "starting nginx"
 start_services
