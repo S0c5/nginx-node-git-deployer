@@ -15,7 +15,7 @@ echo "[+] moving to work tree"
 cd $GIT_WORK_TREE
 
 
-export NVM_DIR = ~/.nvm
+export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
 
 echo "[+] install node version"
