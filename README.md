@@ -1,5 +1,7 @@
 # git-deployer
-Set-up deploy system based on git for EC2 aws services 
+Set-up deploy system based on git for EC2 aws services and convert instance tags to env 
+  
+
 
 
 ```bash
