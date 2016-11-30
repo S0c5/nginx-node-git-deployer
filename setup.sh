@@ -94,4 +94,4 @@ salt
 print "use deploy with"
 print "[!] please execute it for add remote: "
 print "git remote add test $APP_DOMAIN:$GIT_SERVER_DIR"
-print "deloy: git push test master"
+print "deploy: git push test master"
