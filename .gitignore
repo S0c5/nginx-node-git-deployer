@@ -1,0 +1,7 @@
+#   directories
+.idea
+
+#   extensions
+
+*.iml
+*.zip

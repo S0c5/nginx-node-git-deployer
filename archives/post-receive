@@ -1,0 +1,30 @@
+#! /bin/bash
+
+
+source /etc/profile.d/tags-to-env.sh
+
+export GIT_WORK_TREE=${GIT_WORK_TREE:-/var/www}
+export GIT_BRANCH=${GIT_BRANCH:-master}
+export GIT_REPO_TREE=${GIT_REPO_TREE:-$(pwd)}
+export GIT_BRANCH=${GIT_BRANCH:-master}
+export NODE_VERSION=${NODE_VERSION:-4.4.4}
+
+
+git checkout ${GIT_BRANCH} -f
+echo "[+] moving to work tree"
+cd $GIT_WORK_TREE
+
+
+export NVM_DIR = ~/.nvm
+source ~/.nvm/nvm.sh
+
+echo "[+] install node version"
+nvm install ${NODE_VERSION}
+
+echo "[+] Installing dependencies "
+npm install
+
+echo "[+] restarting app"
+pm2 restart app
+
+echo "[+] deployed"
